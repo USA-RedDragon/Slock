@@ -5,9 +5,12 @@ const npmUtils = require('./utils/npm');
 const fsUtils = require('./utils/fs');
 const browserifyUtils = require('./utils/browserify');
 const uglifyUtils = require('./utils/uglify');
+const imageUtils = require('./utils/images');
 
 const SHHLACK_PLACEHOLDER = '@@SHHLACK_PLACEHOLDER@@';
 const CRYPTOJS_PLACEHOLDER = '// @@@@CRYPTOJS@@@@';
+const SHHLACK_ICON_PLACEHOLDER = '@@@@shhlackIcon.png@@@@';
+const SHHLACK_WARNING_ICON_PLACEHOLDER = '@@@@shhlackWarningIcon.png@@@@';
 
 const CURRENT_DIR = __dirname;
 
@@ -55,6 +58,10 @@ async function build() {
 
     // Inject CryptoJS to Shhlack
     shhlackPatch = shhlackPatch.replace(CRYPTOJS_PLACEHOLDER, cryptoJSMinified);
+
+    // Inject PNGs
+    shhlackPatch = imageUtils.inject('./icons/shhlackIcon.png', shhlackPatch, SHHLACK_ICON_PLACEHOLDER);
+    shhlackPatch = imageUtils.inject('./icons/shhlackWarningIcon.png', shhlackPatch, SHHLACK_WARNING_ICON_PLACEHOLDER);
 
     // Write Shhlack
     fs.writeFileSync(
