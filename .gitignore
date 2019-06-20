@@ -1,12 +1,4 @@
 node_modules/
 build/
-temp/
-utils/
-tests/
-*.bak
-*.pem
-*.crx
-*.tgz
-*.zip
-test/
-old/
+tmp/
+release/

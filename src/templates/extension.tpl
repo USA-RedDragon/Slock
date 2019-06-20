@@ -1,12 +1,12 @@
 (function(global) {
-  var _____INJECT_____ = @@SHHLACK_PLACEHOLDER@@;
+  var sshlackInjector = @@SHHLACK_PLACEHOLDER@@;
 
   if (global
     && global.navigator
     && global.navigator.userAgent.toLowerCase().indexOf('electron') === -1) {
-    global.INJECTOR = _____INJECT_____;
+    global.INJECTOR = sshlackInjector;
   } else {
-    _____INJECT_____();
+    sshlackInjector();
   }
 })(typeof global !== 'undefined' ? global : window);
 //# sourceURL=<ENSLACKER>

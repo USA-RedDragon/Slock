@@ -3,13 +3,13 @@ REMOVE ME TO BOTTOM TO RECREATE ORIGINAL
 FILE /usr/lib/slack/resources/app.asar.unpacked/src/static/ssb-interop.js
 */
 (function(global) {
-  var _____INJECT_____ = @@SHHLACK_PLACEHOLDER@@;
+  var sshlackInjector = @@SHHLACK_PLACEHOLDER@@;
 
   if (global 
     && global.navigator
     && global.navigator.userAgent.toLowerCase().indexOf('electron') === -1) {
-    global.INJECTOR = _____INJECT_____;
+    global.INJECTOR = sshlackInjector;
   } else {
-    _____INJECT_____();
+    sshlackInjector();
   }
 })(typeof global !== 'undefined' ? global : window);
