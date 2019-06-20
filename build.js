@@ -7,7 +7,7 @@ const browserifyUtils = require('./utils/browserify');
 const uglifyUtils = require('./utils/uglify');
 const imageUtils = require('./utils/images');
 
-const SHHLACK_PLACEHOLDER = '@@SHHLACK_PLACEHOLDER@@';
+const SHHLACK_PLACEHOLDER = 'null; // @@SHHLACK_PLACEHOLDER@@';
 const CRYPTOJS_PLACEHOLDER = '// @@@@CRYPTOJS@@@@';
 const SHHLACK_ICON_PLACEHOLDER = '@@@@shhlackIcon.png@@@@';
 const SHHLACK_WARNING_ICON_PLACEHOLDER = '@@@@shhlackWarningIcon.png@@@@';
@@ -26,8 +26,8 @@ const BUILD_EXTENSION_DIR = path.join(BUILD_DIR, 'extension');
 const BUILD_STANDALONE_DIR = path.join(BUILD_DIR, 'standalone');
 
 let shhlackPatch = fs.readFileSync('src/shhlack.js').toString();
-const extensionTemplate = fs.readFileSync('src/templates/extension.tpl').toString();
-const standaloneTemplate = fs.readFileSync('src/templates/standalone.tpl').toString();
+const extensionTemplate = fs.readFileSync('src/templates/extension.tpl.js').toString();
+const standaloneTemplate = fs.readFileSync('src/templates/standalone.tpl.js').toString();
 
 fsUtils.copyFolderRecursiveSync(SRC_EXTENSION_DIR, BUILD_DIR);
 fsUtils.copyFolderRecursiveSync(SRC_STANDALONE_DIR, BUILD_DIR);
