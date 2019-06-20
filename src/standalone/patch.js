@@ -5,8 +5,12 @@ FILE /usr/lib/slack/resources/app.asar.unpacked/src/static/ssb-interop.js
 (function() {
     try {
         const branch = 'master';
-        const versionURL = `https://raw.githubusercontent.com/mindedsecurity/shhlack/${branch}/release/standalone/package.json`;
-        const updateURL = `https://raw.githubusercontent.com/mindedsecurity/shhlack/${branch}/release/standalone/shhlack.js`;
+        const versionURL = 'https://raw.githubusercontent.com/'
+                           + `mindedsecurity/shhlack/${branch}`
+                           + '/release/standalone/package.json';
+        const updateURL = 'https://raw.githubusercontent.com/'
+                          + `mindedsecurity/shhlack/${branch}`
+                          + '/release/standalone/shhlack.js';
         const os = require('os');
         const path = require('path');
         const fs = require('fs');
@@ -67,16 +71,11 @@ FILE /usr/lib/slack/resources/app.asar.unpacked/src/static/ssb-interop.js
                 // Expecting that if minor or major version change the patcher needs update.
                 // so user will have to download and install the whole package again
                 if (minorVersion || majorVersion) {
-                    alert(`Shhlack: New standalone version available ${remoteVersion} go to 
-            https://github.com/mindedsecurity/shhlack/releases/download/${remoteVersion}/standalone-${remoteVersion}.zip`);
+                    alert(`Shhlack: New standalone version available ${remoteVersion} go to `
+                          + 'https://github.com/mindedsecurity/shhlack/'
+                          + `releases/download/${remoteVersion}/standalone-${remoteVersion}.zip`);
                     return;
                 }
-                /* else if difference is on patch version only we'll
-         just download download the new version on
-         ~/.shhlack/package_new.json
-        and
-          ~/.shhlack/shhlack_new.json
-        */
                 if (patchVersion) {
                     console.log('Shhlack: New Version Available! Do you want to download and install the new version?');
                     localStorage.shhlack_new_version = {
@@ -88,12 +87,24 @@ FILE /usr/lib/slack/resources/app.asar.unpacked/src/static/ssb-interop.js
                         function onend() {
                             try {
                                 downloadfile.end(function() {
-                                    fs.writeFileSync(path.join(shhlackHomePath, 'package_new.json'), data);
-                                    const response = confirm('Shhlack: New version downloaded, do you want to install it?');
+                                    fs.writeFileSync(
+                                        path.join(shhlackHomePath, 'package_new.json'),
+                                        data);
+                                    const response = confirm(
+                                        'Shhlack: New version downloaded, do you want to install it?');
                                     if (response) {
-                                        fs.writeFileSync(shhlackPackagePath, fs.readFileSync(path.join(shhlackHomePath, 'package_new.json')));
-                                        console.log(shhlackPath, path.join(shhlackHomePath, 'shhlack_new.js'), fs.readFileSync(path.join(shhlackHomePath, 'shhlack_new.js')) + '');
-                                        fs.writeFileSync(shhlackPath, fs.readFileSync(path.join(shhlackHomePath, 'shhlack_new.js')) + '');
+                                        fs.writeFileSync(
+                                            shhlackPackagePath,
+                                            fs.readFileSync(
+                                                path.join(shhlackHomePath, 'package_new.json')));
+                                        console.log(
+                                            shhlackPath,
+                                            path.join(shhlackHomePath, 'shhlack_new.js'),
+                                            fs.readFileSync(path.join(shhlackHomePath, 'shhlack_new.js')) + '');
+                                        fs.writeFileSync(
+                                            shhlackPath,
+                                            fs.readFileSync(
+                                                path.join(shhlackHomePath, 'shhlack_new.js')) + '');
                                     }
                                 });
                             } catch (exc) {

@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable new-cap */
+/* eslint-disable prefer-rest-params */
 
 function sshlackInjector() {
     const cryptojs = {};
@@ -852,7 +853,9 @@ ts_tip_hidden"  aria-labelledby="shhlack_ts_tip_tip_shhlack" tabindex="-1">
            <span
               id="shhlack_eye"
               class="ts_tip ts_tip_bottom ts_tip_float inline_block ts_tip_hidden padding_top_50"
-              onclick="var pass=document.querySelector('#shhlack_value');pass.type=pass.type==='password'?'text':'password'">
+              onclick="
+                var pass=document.querySelector('#shhlack_value');pass.type=pass.type==='password'?'text':'password'
+              ">
             <ts-icon class="ts_icon_eye prefix"></ts-icon>
             <span id="shhlack_ts_tip_tip_1" class="ts_tip_tip">Show Passphrase</span>
            </span>
@@ -919,7 +922,8 @@ ts_tip_hidden"  aria-labelledby="shhlack_ts_tip_tip_shhlack" tabindex="-1">
         <label style="width: 20%" for="shhlack_master_checkbox">
           Enable Master
           <input type="checkbox" style="width: 10%" id="shhlack_master_checkbox" style="width: 66%"
-             onchange="alert('not implemented yet');return ;var t=document.querySelector('#shhlack_personal_master_key');t.disabled=!this.checked">
+             onchange="alert('not implemented yet');return ;">
+             <!-- var t=document.querySelector('#shhlack_personal_master_key');t.disabled=!this.checked" -->
         </label>
         <input
           style="width: 50%"
