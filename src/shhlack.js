@@ -1,9 +1,6 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable new-cap */
-/* eslint-disable prefer-rest-params */
-
 function sshlackInjector() {
-    const cryptojs = {};
+    /* eslint-disable prefer-const */
+    let cryptojs = {};
     // @@@@CRYPTOJS@@@@
     const CHAR = 's';
     const debug = true ? console.log.bind(console) : function() {};
@@ -112,6 +109,7 @@ function sshlackInjector() {
         return !!document.querySelector('#team_menu');
     }
     function signToHex(message, pass) {
+        /* eslint-disable new-cap */
         return cryptojs.HmacSHA256(message, pass) + '';
     }
 
